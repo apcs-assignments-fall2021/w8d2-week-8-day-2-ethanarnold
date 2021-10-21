@@ -15,7 +15,7 @@ public class Rational {
         numerator = a;
         denominator = b;
     }
-    
+
     // This method takes two Rationals, add them up,
     // and returns a Rational equal to the sum
     // You will need to:
@@ -26,33 +26,44 @@ public class Rational {
     // (When you write the simplify method later on, you should
     // also call it in this method to return the simplified result)
     public static Rational add(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.denominator + s.numerator*r.denominator;
+        int newDenominator = r.denominator*s.denominator;
+        Rational res = new Rational(newNumerator, newDenominator);
+        return simplify(res);
     }
 
-    // This method takes two Rationals, subtracts thems up, 
+    // This method takes two Rationals, subtracts them,
     // and returns a Rational equal to the difference
     public static Rational subtract(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.denominator - s.numerator*r.denominator;
+        int newDenominator = r.denominator*s.denominator;
+        Rational res = new Rational(newNumerator, newDenominator);
+        return simplify(res);
     }
     
     public static Rational multiply(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.numerator;
+        int newDenominator = r.denominator*s.denominator;
+        Rational res = new Rational(newNumerator, newDenominator);
+        return simplify(res);
     }
     
     public static Rational divide(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.denominator;
+        int newDenominator = r.denominator*s.numerator;
+        Rational res = new Rational(newNumerator, newDenominator);
+        return simplify(res);
     }
 
     // Finds the greatest common factor between a and b
     // To find the greatest common factor, find the largest number x
     // such that a and b are both multiples of x
     public static int greatestCommonFactor(int a, int b){
-        // REPLACE WITH YOUR CODE HERE
-        return 1;
+        int res = 1;
+        for (int i = 1; i <= a && i <= b; i++) {
+            if(a % i == 0 && b % i == 0) res = i;
+        }
+        return res;
     }
 
     // This method is given a rational, and returns a simplified version
@@ -61,8 +72,11 @@ public class Rational {
     // e.g. simplify(2/4) => 1/2
     //      simplify(1/2) => 1/2
     public static Rational simplify(Rational r) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int GCF = greatestCommonFactor(r.numerator, r.denominator);
+        int newNumerator = r.numerator / GCF;
+        int newDenominator = r.denominator / GCF;
+        Rational res = new Rational(newNumerator, newDenominator);
+        return res;
     }
 
     // This following method is NOT static, we'll talk about it next class!
